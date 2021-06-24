@@ -8,13 +8,19 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.time.Duration;
+
 public class BasePage {
     public WebDriver driver;
     public WebDriverWait wait;
+    public static ThreadLocal<WebDriver> tdriver = new ThreadLocal<WebDriver>();
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
-        wait = new WebDriverWait(driver, 15);
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    }
+    public static synchronized WebDriver getDriver() {
+        return tdriver.get();
     }
 
     //Wait Wrapper Method  by element located By

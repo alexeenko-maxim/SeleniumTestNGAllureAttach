@@ -1,9 +1,16 @@
 package tests;
 
+import io.qameta.allure.Attachment;
 import org.openqa.selenium.By;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import util.Listener;
 
+@Listeners(Listener.class)
 public class Test1 extends BaseTest {
+
+@Attachment
+
 
     @Test
     public void findWord() {
